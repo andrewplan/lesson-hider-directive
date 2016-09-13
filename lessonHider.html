@@ -1,11 +1,11 @@
-<li
-  ng-click="dayAlert( { lesson: lesson, day: lessonDay } )"
-  ng-style="lessonStyle"
->
+<li>
   <input
     name="name"
-    ng-model="checked"
+    ng-change="toggleLineThrough()"
+    ng-model="isChecked"
     type="checkbox"
   >
-  {{ lesson }}
+  <span>{{ lesson }}</span>
+  <button ng-click="dayAlert( { lesson: lesson, day: lessonDay } )">Which day?</button>
+  <button class="remove-lesson">Remove lesson</button>
 </li>

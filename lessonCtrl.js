@@ -5,10 +5,11 @@ angular.module( 'directivePractice' )
 
         $scope.announceDay = function( lesson, day ) {
             if ( typeof day === 'undefined' || day === null ) {
-              alert( lesson + ' is inactive.' );
+              alert( lesson + ' is not scheduled.' );
             }
             else {
               alert( lesson + ' is active on ' + day + '.' );
             }
         };
+
 } )

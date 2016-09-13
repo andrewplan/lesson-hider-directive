@@ -17,11 +17,32 @@ angular.module( 'directivePractice' )
                       scope.schedule.forEach( function( scheduleDay ) {
                           if ( scheduleDay.lesson === scope.lesson ) {
                             scope.lessonDay = scheduleDay.weekday;
-                            element.css( { 'text-decoration': 'line-through' } );
+                            element.find( 'span' ).addClass( 'linethrough' );
+                            scope.isChecked = true;
                             return;
                           }
                       } );
                   } );
+
+                  scope.toggleLineThrough = function() {
+                    element.find( 'span' ).toggleClass( 'linethrough' );
+                  };
+
+                  var removeLessonButton = angular.element( element[0].querySelector( '.remove-lesson' ) );
+                  removeLessonButton.on( 'click', function( event ) {
+                      event.preventDefault();
+
+                      for ( var i = scope.schedule.length - 1; i >= 0; i--) {
+                          if ( element.find( 'span' ).text() === scope.schedule[ i ].lesson ) {
+                            scope.schedule.splice( i, 1 );
+                            console.log( scope.schedule );
+                          }
+                      }
+
+                      element.remove();
+
+                  } );
+
               }
 
         }
